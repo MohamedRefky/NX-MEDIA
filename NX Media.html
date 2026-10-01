@@ -41,7 +41,7 @@ h2{font-size:clamp(36px,6vw,56px);line-height:1.2;letter-spacing:-.05em}
 @keyframes reveal{from{opacity:0;transform:scale(.9) rotateY(-40deg)}to{opacity:1;transform:none}}
 @keyframes sway{from{transform:rotateY(-14deg)}to{transform:rotateY(14deg)}}
 .nav-logo{display:flex;align-items:center;gap:10px}
-.nav-logo img{width:36px;height:36px;mix-blend-mode:lighten}
+.nav-logo img{width:36px;height:36px}
 .cols{display:grid;grid-template-columns:1fr 1.2fr;gap:64px}
 .cols p{color:var(--ash);margin:0 0 16px;max-width:560px}
 .cols h3{font-size:24px;font-weight:500;color:var(--white);margin:0 0 16px}
@@ -190,7 +190,7 @@ nav .links a:active{color:var(--white)}
 .f input.bad,.f textarea.bad{border-color:#ff9592}
 .ft{align-items:center}
 .ft-brand{display:flex;align-items:center;gap:12px}
-.ft-brand img{width:40px;height:40px;mix-blend-mode:lighten}
+.ft-brand img{width:40px;height:40px}
 .ft-brand b{display:block;color:var(--white);font-weight:600;letter-spacing:.02em}
 .ft-brand span{font-size:14px;color:var(--ash)}
 .ft-links{display:flex;gap:24px;flex-wrap:wrap}
@@ -221,7 +221,7 @@ body{padding-bottom:72px}}
 </head>
 <body>
 <div class="wrap">
-<nav><a class="logo nav-logo" href="#top"><img src="assets/logo.jpg" alt="NX Media" width="36" height="36">NX MEDIA</a><div class="links"><a href="#about">About</a><a href="#process">How we work</a><a href="#work">Our work</a><a href="#pricing">Pricing</a><a href="#order">Order</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div><button class="menu" id="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mp"><span></span><span></span></button><div class="mpanel" id="mp" hidden><a href="#about">About</a><a href="#process">How we work</a><a href="#work">Our work</a><a href="#pricing">Pricing</a><a href="#order">Order</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div></nav>
+<nav><a class="logo nav-logo" href="#top"><img src="assets/logo.svg" alt="NX Media" width="36" height="36">NX MEDIA</a><div class="links"><a href="#about">About</a><a href="#process">How we work</a><a href="#work">Our work</a><a href="#pricing">Pricing</a><a href="#order">Order</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div><button class="menu" id="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mp"><span></span><span></span></button><div class="mpanel" id="mp" hidden><a href="#about">About</a><a href="#process">How we work</a><a href="#work">Our work</a><a href="#pricing">Pricing</a><a href="#order">Order</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div></nav>
 
 <header class="hero" id="top">
   <div>
@@ -230,7 +230,7 @@ body{padding-bottom:72px}}
     <p class="lead">We help creators, agencies, and brands turn raw footage into professional, engaging videos ready to publish.</p>
     <a class="btn" href="#order">Get Started</a>
   </div>
-  <div class="logo-stage"><div class="ring"></div><img src="assets/logo.jpg" alt="NX Media logo" width="520" height="520"></div>
+  <div class="logo-stage"><div class="ring"></div><img src="assets/logo.svg" alt="NX Media logo" width="520" height="520"></div>
 </header>
 <div class="trust"><span>Fast Delivery</span><span>Professional Editing</span><span>Consistent Quality</span></div>
 
@@ -386,7 +386,7 @@ body{padding-bottom:72px}}
   <p style="margin-top:28px"><a class="btn" href="https://wa.me/201060956959?text=Hi%20NX%20Media%2C%20I%20need%20a%20video%20edited.%20Here%20are%20the%20details%3A" target="_blank" rel="noopener">Order your video on WhatsApp</a></p>
 </section>
 
-<footer class="ft"><div class="ft-brand"><img src="assets/logo.jpg" alt="NX Media" width="40" height="40"><div><b>NX MEDIA</b><span>Professional video editing</span></div></div><div class="ft-links"><a href="https://wa.me/201060956959" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:nxeditteam@gmail.com">nxeditteam@gmail.com</a></div><div class="ft-copy">© NX Media</div></footer>
+<footer class="ft"><div class="ft-brand"><img src="assets/logo.svg" alt="NX Media" width="40" height="40"><div><b>NX MEDIA</b><span>Professional video editing</span></div></div><div class="ft-links"><a href="https://wa.me/201060956959" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:nxeditteam@gmail.com">nxeditteam@gmail.com</a></div><div class="ft-copy">© NX Media</div></footer>
 </div>
 <div class="sticky"><a class="btn" href="#order" data-x="1">Order your video</a></div>
 <script>document.documentElement.classList.add("js");(function(){var e=document.querySelector(".rv");if(!e)return;if(!("IntersectionObserver" in window)){e.classList.add("in");return}var o=new IntersectionObserver(function(a){if(a[0].isIntersecting){e.classList.add("in");o.disconnect()}},{threshold:.15});o.observe(e)})()</script>
