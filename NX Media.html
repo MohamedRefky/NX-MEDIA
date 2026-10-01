@@ -74,7 +74,7 @@ h2{font-size:clamp(36px,6vw,56px);line-height:1.2;letter-spacing:-.05em}
 .c-icon{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;flex-shrink:0;transition:transform .2s ease}
 .contact-card:hover .c-icon{transform:scale(1.08)}
 .wa-icon{background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.28);color:#25d366}
-.mail-icon{background:rgba(146,129,247,.12);border:1px solid rgba(146,129,247,.28);color:#baa7ff}
+.mail-icon{background:#fff;border:1px solid rgba(255,255,255,.22);color:#fff}
 .c-info{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
 .c-label{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ash);font-weight:600}
 .c-val{font-size:15px;color:var(--white);font-family:var(--mono);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -98,12 +98,11 @@ h1{max-width:11em;text-wrap:balance;font-size:clamp(36px,6.2vw,80px)}
 .steps .card:not(:last-child)::after{content:"";position:absolute;left:56px;top:40px;width:calc(100% - 16px);height:1px;background:var(--hair)}
 .js .plans.rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease-out,transform .7s ease-out}
 .js .plans.rv.in{opacity:1;transform:none}
-.work{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
-.work .frame{aspect-ratio:16/9;border:1px solid var(--hair);border-radius:16px;display:grid;place-items:center;overflow:hidden;position:relative;background:#000}
-.work iframe,.work video{position:absolute;inset:0;width:100%;height:100%;border:0}
-.work .ph{display:grid;gap:10px;justify-items:center;color:var(--ash);font-family:var(--mono);font-size:12px}
-.work .ph span{width:44px;height:44px;border:1px solid var(--hair);border-radius:50%;display:grid;place-items:center;color:var(--white)}
-.work-note{color:var(--ash);margin:16px 0 0;font-size:14px}
+.work{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px}
+.work .frame{aspect-ratio:9/16;border:1px solid var(--hair);border-radius:16px;overflow:hidden;position:relative;background:#000;box-shadow:0 12px 32px -8px rgba(0,0,0,.6);transition:border-color .2s ease,transform .2s ease}
+.work .frame:hover{border-color:rgba(255,255,255,.2);transform:translateY(-3px)}
+.work video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;background:#000}
+.work-note{color:var(--ash);margin:24px 0 0;font-size:14px;text-align:center}
 .faq{margin-top:40px;display:grid;gap:12px;max-width:800px}
 .faq details{border:1px solid var(--hair);border-radius:16px;padding:20px 24px}
 .faq summary{cursor:pointer;font-weight:500;color:var(--white);list-style:none;display:flex;justify-content:space-between;gap:16px}
@@ -112,7 +111,8 @@ h1{max-width:11em;text-wrap:balance;font-size:clamp(36px,6.2vw,80px)}
 .faq details[open] summary::after{content:"–"}
 .faq details p{margin:12px 0 0;color:var(--ash);font-size:15px}
 .sticky{display:none}
-@media(max-width:900px){.work{grid-template-columns:1fr}.steps .card::after{display:none!important}
+@media(max-width:900px){.work{grid-template-columns:repeat(2,1fr)}.steps .card::after{display:none!important}
+@media(max-width:520px){.work{grid-template-columns:1fr;max-width:320px;margin-left:auto;margin-right:auto}}
 .sticky{display:block;position:fixed;left:0;right:0;bottom:0;z-index:20;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:rgba(0,0,0,.95);backdrop-filter:blur(25px);border-top:1px solid var(--hair)}
 .sticky a{display:block;text-align:center}body{padding-bottom:76px}}
 @media(prefers-reduced-motion:reduce){.ring{animation:none}.js .plans.rv{opacity:1;transform:none;transition:none}}
@@ -256,9 +256,29 @@ body{padding-bottom:72px}}
 
 <section id="work" style="border-top:1px solid var(--hair)">
   <h2>Our work</h2>
-  <!-- To add a sample: replace a .frame's inner .ph with <iframe src="YOUTUBE_EMBED_URL" allowfullscreen></iframe> (or a <video controls src="..."></video>) -->
-  <div class="work"><div class="frame"><div class="ph"><span>▶</span>Your video here</div></div><div class="frame"><div class="ph"><span>▶</span>Your video here</div></div><div class="frame"><div class="ph"><span>▶</span>Your video here</div></div></div>
-  <p class="work-note">Samples are coming soon. Want to see the quality first? Ask us on WhatsApp.</p>
+  <div class="work">
+    <div class="frame">
+      <video controls playsinline preload="metadata" poster="https://res.cloudinary.com/gymlba2m/video/upload/v1790857457/WhatsApp_Video_2026-10-01_at_1.38.45_PM.jpg">
+        <source src="https://res.cloudinary.com/gymlba2m/video/upload/v1790857457/WhatsApp_Video_2026-10-01_at_1.38.45_PM.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="frame">
+      <video controls playsinline preload="metadata" poster="https://res.cloudinary.com/gymlba2m/video/upload/v1790857449/WhatsApp_Video_2026-10-01_at_1.38.45_PM_2.jpg">
+        <source src="https://res.cloudinary.com/gymlba2m/video/upload/v1790857449/WhatsApp_Video_2026-10-01_at_1.38.45_PM_2.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="frame">
+      <video controls playsinline preload="metadata" poster="https://res.cloudinary.com/gymlba2m/video/upload/v1790857436/WhatsApp_Video_2026-10-01_at_1.38.45_PM_1.jpg">
+        <source src="https://res.cloudinary.com/gymlba2m/video/upload/v1790857436/WhatsApp_Video_2026-10-01_at_1.38.45_PM_1.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="frame">
+      <video controls playsinline preload="metadata" poster="https://res.cloudinary.com/gymlba2m/video/upload/v1790857425/WhatsApp_Video_2026-10-01_at_1.38.45_PM_3.jpg">
+        <source src="https://res.cloudinary.com/gymlba2m/video/upload/v1790857425/WhatsApp_Video_2026-10-01_at_1.38.45_PM_3.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  <p class="work-note">Recent editing work for creators and brands. Want to see more samples in a specific style? <a href="https://wa.me/201060956959?text=Hi%20NX%20Media%2C%20I%20would%20like%20to%20see%20more%20portfolio%20samples" target="_blank" rel="noopener" style="color:var(--violet);text-decoration:underline">Ask us on WhatsApp</a>.</p>
 </section>
 
 <section id="pricing" style="border-top:1px solid var(--hair)">
@@ -372,8 +392,12 @@ body{padding-bottom:72px}}
 
     <a class="contact-card email" href="https://mail.google.com/mail/?view=cm&fs=1&to=nxeditteam@gmail.com&su=Video%20Editing%20Request%20-%20NX%20Media&body=Hi%20NX%20Media%2C%0A%0AI%20would%20like%20to%20order%20a%20video%20edit.%0A%0AName%3A%20%0APackage%3A%20%0ADetails%3A%20" target="_blank" rel="noopener" aria-label="Send email via Gmail">
       <div class="c-icon mail-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L12 9.573l8.073-6.08c1.618-1.214 3.927-.059 3.927 1.964Z"/>
+        <svg width="24" height="24" viewBox="52 42 88 66">
+          <path fill="#4285f4" d="M58 108h14V74L52 59v43c0 3.32 2.69 6 6 6"/>
+          <path fill="#34a853" d="M120 108h14c3.32 0 6-2.69 6-6V59l-20 15"/>
+          <path fill="#fbbc04" d="M120 48v26l20-15v-8c0-7.42-8.47-11.65-14.4-7.2"/>
+          <path fill="#ea4335" d="M72 74V48l24 18 24-18v26L96 92"/>
+          <path fill="#c5221f" d="M52 51v8l20 15V48l-5.6-4.2c-5.94-4.45-14.4-.22-14.4 7.2"/>
         </svg>
       </div>
       <div class="c-info">
@@ -417,10 +441,10 @@ upd()})();
 (function(){var b=document.getElementById('mb'),p=document.getElementById('mp');
 function c(){p.hidden=true;b.setAttribute('aria-expanded','false')}
 b.addEventListener('click',function(e){e.stopPropagation();var o=p.hidden;p.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false')});
-p.addEventListener('click',function(e){if(e.target.tagName==='A')c()});
-document.addEventListener('click',function(e){if(!p.contains(e.target))c()});
+document.addEventListener('click',function(e){if(!p.contains(e.target)&&e.target!==b)c()});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')c()});
-window.addEventListener('resize',function(){if(window.innerWidth>900)c()})})();</script>
+window.addEventListener('resize',function(){if(window.innerWidth>900)c()})})();
+document.querySelectorAll('.work video').forEach(function(v){v.addEventListener('play',function(){document.querySelectorAll('.work video').forEach(function(o){if(o!==v&&!o.paused)o.pause()})})});</script>
 <script>(function(){var ids=['about','process','work','pricing','order','faq','contact'],links=document.querySelectorAll('nav .links a,#mp a'),vis={},lock=0,tk=0;
 function set(id){links.forEach(function(a){var on=a.getAttribute('href')==='#'+id;a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')})}
 function calc(){if(Date.now()<lock)return;var cur='';ids.forEach(function(i){if(vis[i])cur=i});
