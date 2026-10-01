@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NX Media — Professional Video Editing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#000;--hair:#292d30;--white:#fff;--bone:#f0f0f0;--ash:#a1a4a5;--smoke:#abafb4;
+  --violet:#9281f7;--glow:#baa7ff;--green:#3ad389;
+  --grad:linear-gradient(to right bottom,#9281f7,#9a54dc);
+  --inter:'Inter',ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --serif:'Playfair Display','Domaine','GT Sectra',Georgia,serif;
+  --mono:'JetBrains Mono','Commit Mono',ui-monospace,Menlo,Consolas,monospace;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--void);color:var(--bone);font:400 16px/1.5 var(--inter);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{font-weight:600;letter-spacing:.02em;color:var(--white)}
+nav .links{display:flex;gap:28px;font-size:14px}
+nav .links a{color:var(--bone)}nav .links a:hover{color:var(--white)}
+.btn{display:inline-block;border:1px solid var(--hair);border-radius:6px;padding:12px 16px;color:var(--white);font-size:14px;font-weight:500;background:transparent;transition:border-color .15s ease-out}
+.btn:hover,.btn:focus-visible{border-color:var(--white);outline:none}
+.pill{display:inline-block;border:1px solid var(--hair);border-radius:9999px;padding:6px 12px;font-size:14px;color:var(--bone)}
+.pill b{font-weight:400;color:var(--violet)}
+h1,h2{font-weight:400;margin:0;color:var(--white)}
+h1{font-family:var(--serif);font-size:clamp(48px,9vw,96px);line-height:1;letter-spacing:-.01em}
+h2{font-size:clamp(36px,6vw,56px);line-height:1.2;letter-spacing:-.05em}
+.hero{padding:72px 0 96px;display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center}
+.hero p.lead{font-size:18px;color:var(--ash);max-width:520px;margin:28px 0}
+.tags{font-family:var(--mono);font-size:13px;color:var(--violet);margin:0 0 32px}
+.logo-stage{justify-self:center;width:100%;max-width:400px;perspective:1000px}
+.logo-stage img{display:block;width:100%;height:auto;mix-blend-mode:lighten;opacity:0;animation:reveal 1.2s cubic-bezier(.2,.7,.2,1) .1s forwards,sway 9s ease-in-out 1.3s infinite alternate}
+@keyframes reveal{from{opacity:0;transform:scale(.9) rotateY(-40deg)}to{opacity:1;transform:none}}
+@keyframes sway{from{transform:rotateY(-14deg)}to{transform:rotateY(14deg)}}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{width:36px;height:36px;mix-blend-mode:lighten}
+.cols{display:grid;grid-template-columns:1fr 1.2fr;gap:64px}
+.cols p{color:var(--ash);margin:0 0 16px;max-width:560px}
+.cols h3{font-size:24px;font-weight:500;color:var(--white);margin:0 0 16px}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:48px}
+.card{border:1px solid var(--hair);border-radius:16px;padding:32px;background:#000}
+.steps .card{padding:24px}
+.steps .n{display:grid;place-items:center;width:32px;height:32px;border-radius:16px;background:var(--grad);color:#fff;font-family:var(--mono);font-size:13px;margin-bottom:20px}
+.steps h4,.plan h3{margin:0 0 8px;font-size:16px;font-weight:600;color:var(--white)}
+.steps p{margin:0;font-size:14px;color:var(--ash);line-height:1.5}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.plan{display:flex;flex-direction:column}
+.plan.pop{border-color:var(--violet)}
+.plan h3{font-size:20px}
+.price{font-size:56px;letter-spacing:-.05em;color:var(--white);line-height:1.2;margin:16px 0 4px}
+.price small{font-family:var(--mono);font-size:14px;letter-spacing:0;color:var(--ash)}
+.badge{font-family:var(--mono);font-size:12px;color:var(--violet);margin-left:8px}
+.plan ul{list-style:none;padding:0;margin:24px 0 32px;display:grid;gap:12px;font-size:14px;flex:1}
+.plan li{color:var(--bone);padding-left:22px;position:relative}
+.plan li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--green)}
+.plan li.base{color:var(--ash)}
+.plan .btn{text-align:center}
+.custom{margin-top:16px;display:flex;justify-content:space-between;gap:24px;align-items:center;flex-wrap:wrap}
+.custom h3{margin:0 0 4px;font-size:18px;font-weight:500;color:var(--white)}
+.custom p{margin:0;color:var(--ash);font-size:14px}
+.contact-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:640px;margin:28px auto 0;text-align:left}
+.contact-card{display:flex;align-items:center;gap:16px;padding:18px 20px;border:1px solid var(--hair);border-radius:14px;background:rgba(255,255,255,.02);transition:all .2s cubic-bezier(.16,1,.3,1);text-decoration:none}
+.contact-card:hover{transform:translateY(-2px);background:rgba(255,255,255,.05)}
+.contact-card.whatsapp:hover{border-color:rgba(37,211,102,.5);box-shadow:0 8px 24px -6px rgba(37,211,102,.25)}
+.contact-card.email:hover{border-color:rgba(234,67,53,.5);box-shadow:0 8px 24px -6px rgba(234,67,53,.25)}
+.c-icon{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;flex-shrink:0;transition:transform .2s ease}
+.contact-card:hover .c-icon{transform:scale(1.08)}
+.wa-icon{background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.28);color:#25d366}
+.mail-icon{background:rgba(234,67,53,.12);border:1px solid rgba(234,67,53,.28);color:#ea4335}
+.c-info{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+.c-label{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ash);font-weight:600}
+.c-val{font-size:15px;color:var(--white);font-family:var(--mono);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.c-arrow{color:var(--ash);font-size:20px;line-height:1;transition:transform .2s ease,color .2s ease}
+.contact-card:hover .c-arrow{color:var(--white);transform:translateX(3px)}
+@media(max-width:620px){.contact-cards{grid-template-columns:1fr}}
+.cta-sec{text-align:center}
+.cta-sec p{color:var(--ash);margin:20px auto 0;max-width:480px}
+footer{border-top:1px solid var(--hair);padding:28px 0;font-size:14px;color:var(--ash);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+@media(max-width:900px){.hero,.cols{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.plans{grid-template-columns:1fr}.logo-stage{max-width:240px;order:-1}section{padding:64px 0}}
+@media(max-width:520px){.steps{grid-template-columns:1fr}nav .links{display:none}}
+@media(prefers-reduced-motion:reduce){.logo-stage img{animation:none;opacity:1}}
+
+.logo-stage{position:relative;max-width:460px}
+.ring{position:absolute;inset:-1%;border-radius:50%;border:1px solid var(--hair);animation:turn 16s linear infinite;pointer-events:none}
+.ring::after{content:"";position:absolute;top:-4px;left:50%;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:var(--violet)}
+@keyframes turn{to{transform:rotate(360deg)}}
+h1{max-width:11em;text-wrap:balance;font-size:clamp(36px,6.2vw,80px)}
+.steps .card{position:relative}
+.steps .n{position:relative;z-index:1}
+.steps .card:not(:last-child)::after{content:"";position:absolute;left:56px;top:40px;width:calc(100% - 16px);height:1px;background:var(--hair)}
+.js .plans.rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease-out,transform .7s ease-out}
+.js .plans.rv.in{opacity:1;transform:none}
+.work{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.work .frame{aspect-ratio:16/9;border:1px solid var(--hair);border-radius:16px;display:grid;place-items:center;overflow:hidden;position:relative;background:#000}
+.work iframe,.work video{position:absolute;inset:0;width:100%;height:100%;border:0}
+.work .ph{display:grid;gap:10px;justify-items:center;color:var(--ash);font-family:var(--mono);font-size:12px}
+.work .ph span{width:44px;height:44px;border:1px solid var(--hair);border-radius:50%;display:grid;place-items:center;color:var(--white)}
+.work-note{color:var(--ash);margin:16px 0 0;font-size:14px}
+.faq{margin-top:40px;display:grid;gap:12px;max-width:800px}
+.faq details{border:1px solid var(--hair);border-radius:16px;padding:20px 24px}
+.faq summary{cursor:pointer;font-weight:500;color:var(--white);list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);color:var(--violet)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:12px 0 0;color:var(--ash);font-size:15px}
+.sticky{display:none}
+@media(max-width:900px){.work{grid-template-columns:1fr}.steps .card::after{display:none!important}
+.sticky{display:block;position:fixed;left:0;right:0;bottom:0;z-index:20;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:rgba(0,0,0,.95);backdrop-filter:blur(25px);border-top:1px solid var(--hair)}
+.sticky a{display:block;text-align:center}body{padding-bottom:76px}}
+@media(prefers-reduced-motion:reduce){.ring{animation:none}.js .plans.rv{opacity:1;transform:none;transition:none}}
+@media(max-width:900px){nav{gap:16px}nav .links{gap:18px;overflow-x:auto;white-space:nowrap;min-width:0;scrollbar-width:none}nav .links::-webkit-scrollbar{display:none}h1,h2,.price{overflow-wrap:break-word}}
+
+.order{display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:start}
+.order .intro p{color:var(--ash);max-width:420px;margin:20px 0 0}
+.order form{display:grid;gap:20px}
+.f label.l,.f legend{display:block;font-size:14px;font-weight:500;color:var(--white);margin:0 0 8px;padding:0}
+.f fieldset{border:0;margin:0;padding:0;min-width:0}
+.f input[type=text],.f input[type=number],.f input[type=url],.f textarea{width:100%;background:#000;color:var(--white);border:1px solid var(--hair);border-radius:6px;padding:12px 14px;font:400 16px var(--inter);transition:border-color .15s ease-out}
+.f textarea{min-height:96px;resize:vertical}
+.f input:focus,.f textarea:focus{outline:none;border-color:var(--white)}
+.f ::placeholder{color:#6e727a}
+input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+input[type=number]{-moz-appearance:textfield;appearance:textfield}
+.stepper{display:flex;align-items:stretch;border:1px solid var(--hair);border-radius:6px;background:#000;transition:border-color .15s ease-out;overflow:hidden;height:46px}
+.stepper:focus-within{border-color:var(--white)}
+.stepper.bad{border-color:#ff9592}
+.stepper input[type=number]{border:0!important;border-radius:0!important;text-align:center;font-family:var(--mono);font-size:16px;font-weight:500;padding:0;background:transparent!important;color:var(--white);width:100%;height:100%}
+.step-btn{background:transparent;border:0;color:var(--ash);width:44px;font-size:20px;font-family:var(--mono);cursor:pointer;display:grid;place-items:center;user-select:none;-webkit-user-select:none;transition:background .15s ease-out,color .15s ease-out;padding:0}
+.step-btn:hover{background:rgba(255,255,255,.08);color:var(--white)}
+.step-btn:active{background:rgba(255,255,255,.16);color:var(--white)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opts label{cursor:pointer;position:relative}
+.opts input{position:absolute;opacity:0;pointer-events:none}
+.opts span{display:block;border:1px solid var(--hair);border-radius:6px;padding:12px 14px;font-size:14px;color:var(--bone);transition:border-color .15s ease-out}
+.opts span small{display:block;font-family:var(--mono);font-size:12px;color:var(--ash);margin-top:2px}
+.opts input:checked+span{border-color:var(--violet);color:var(--white)}
+.opts input:focus-visible+span{border-color:var(--white)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.est{font-family:var(--mono);font-size:14px;color:var(--ash);border:1px solid var(--hair);border-radius:6px;padding:12px 14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.est b{font-weight:400;color:var(--violet)}
+.err{color:#ff9592;font-size:14px;margin:0;min-height:0}
+button.btn{cursor:pointer;font-family:var(--inter);width:100%}
+.hint{font-size:13px;color:var(--ash);margin:0;text-align:center}
+.order-perks{margin-top:36px;display:grid;gap:14px}
+.perk{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border:1px solid var(--hair);border-radius:12px;background:rgba(255,255,255,.02);transition:border-color .2s ease,background .2s ease}
+.perk:hover{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.04)}
+.perk-i{width:34px;height:34px;border-radius:8px;background:rgba(146,129,247,.12);border:1px solid rgba(146,129,247,.28);color:var(--violet);display:grid;place-items:center;font-size:15px;flex-shrink:0}
+.perk h4{margin:0 0 3px;font-size:14px;font-weight:600;color:var(--white)}
+.perk p{margin:0!important;font-size:13px!important;color:var(--ash)!important;line-height:1.45!important}
+@media(max-width:900px){.order{grid-template-columns:1fr;gap:32px}.order-perks{margin-top:24px}}
+@media(max-width:520px){.row2{grid-template-columns:1fr}}
+
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+*{-webkit-tap-highlight-color:transparent}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:25;background:rgba(0,0,0,.88);backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px)}
+.menu{display:none;flex-direction:column;justify-content:center;align-items:center;gap:6px;width:44px;height:44px;border:1px solid var(--hair);border-radius:6px;background:transparent;cursor:pointer;padding:0}
+.menu span{display:block;width:18px;height:1.5px;background:var(--white);transition:transform .2s ease-out}
+.menu[aria-expanded=true] span:nth-child(1){transform:translateY(3.75px) rotate(45deg)}
+.menu[aria-expanded=true] span:nth-child(2){transform:translateY(-3.75px) rotate(-45deg)}
+.mpanel{position:absolute;top:calc(100% - 4px);left:0;right:0;display:grid;padding:8px;background:rgba(0,0,0,.97);border:1px solid var(--hair);border-radius:16px}
+.mpanel[hidden]{display:none}
+.mpanel a{padding:14px 16px;border-radius:6px;color:var(--bone);font-size:16px}
+.mpanel a:active{background:rgba(255,255,255,.08);color:var(--white)}
+@media(max-width:900px){nav .links{display:none}.menu{display:flex}}
+.btn:active{transform:scale(.98);border-color:var(--white);background:rgba(255,255,255,.07)}
+.opts label:active span{border-color:var(--white)}
+.faq summary:active{opacity:.7}
+nav .links a:active{color:var(--white)}
+.hero{padding-bottom:64px}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);border-block:1px solid var(--hair)}
+.trust span{padding:20px 12px;text-align:center;font-size:14px;font-weight:500;color:var(--bone)}
+.trust span+span{border-left:1px solid var(--hair)}
+@media(max-width:520px){.trust span{font-size:13px;padding:16px 8px}}
+.about-h{font-size:24px;letter-spacing:0;font-weight:500;color:var(--ash)}
+.statement{font-family:var(--serif);font-size:clamp(28px,4.6vw,52px);line-height:1.15;letter-spacing:-.01em;color:var(--white);max-width:22em;margin:24px 0 56px;text-wrap:balance;font-weight:400}
+.about-cols{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.about-cols p{margin:0;color:var(--ash);max-width:480px}
+@media(max-width:900px){.about-cols{grid-template-columns:1fr;gap:20px}.statement{margin-bottom:32px}}
+.ferr{color:#ff9592;font-size:13px;margin:6px 0 0}
+.ferr:empty{display:none}
+.help{font-size:13px;color:var(--ash);margin:6px 0 0}
+.f input.bad,.f textarea.bad{border-color:#ff9592}
+.ft{align-items:center}
+.ft-brand{display:flex;align-items:center;gap:12px}
+.ft-brand img{width:40px;height:40px;mix-blend-mode:lighten}
+.ft-brand b{display:block;color:var(--white);font-weight:600;letter-spacing:.02em}
+.ft-brand span{font-size:14px;color:var(--ash)}
+.ft-links{display:flex;gap:24px;flex-wrap:wrap}
+.ft-links a{color:var(--ash)}.ft-links a:hover,.ft-links a:active{color:var(--white)}
+.ft-copy{flex-basis:100%;font-size:13px;color:#6e727a;border-top:1px solid var(--hair);padding-top:20px;margin-top:8px}
+
+nav .links a{position:relative;padding:6px 0;transition:color .15s ease-out}
+nav .links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--white);transform:scaleX(0);transform-origin:left;transition:transform .25s ease-out}
+nav .links a.active{color:var(--white)}
+nav .links a.active::after{transform:scaleX(1)}
+.mpanel a.active{color:var(--white);background:rgba(255,255,255,.07)}
+@media(prefers-reduced-motion:reduce){nav .links a::after{transition:none}}
+
+.status{margin:0;text-align:center;font-size:14px;color:var(--ash)}
+.status:empty{display:none}
+.status a{color:var(--white);text-decoration:underline;text-underline-offset:3px}
+.btn:disabled{opacity:.6;cursor:default}
+.sticky{transition:transform .25s ease-out}
+.sticky.off{transform:translateY(110%);pointer-events:none}
+@media(prefers-reduced-motion:reduce){.sticky{transition:none}}
+
+@media(max-width:900px){
+.sticky{left:auto;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));padding:0;background:none;border:0;backdrop-filter:none;-webkit-backdrop-filter:none;transition:transform .25s ease-out,opacity .25s ease-out}
+.sticky a{display:inline-block;width:auto;background:#000;border-color:#6e727a;padding:12px 18px}
+.sticky.off{opacity:0;transform:translateY(calc(100% + 80px))}
+body{padding-bottom:72px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><a class="logo nav-logo" href="#top"><img src="assets/logo.jpg" alt="NX Media" width="36" height="36">NX MEDIA</a><div class="links"><a href="#about">About</a><a href="#process">How we work</a><a href="#work">Our work</a><a href="#pricing">Pricing</a><a href="#order">Order</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div><button class="menu" id="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mp"><span></span><span></span></button><div class="mpanel" id="mp" hidden><a href="#about">About</a><a href="#process">How we work</a><a href="#work">Our work</a><a href="#pricing">Pricing</a><a href="#order">Order</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div></nav>
+
+<header class="hero" id="top">
+  <div>
+    <span class="pill">Fast delivery, every time <b>›</b></span>
+    <h1 style="margin-top:28px">Professional video editing that makes your content stand out.</h1>
+    <p class="lead">We help creators, agencies, and brands turn raw footage into professional, engaging videos ready to publish.</p>
+    <a class="btn" href="#order">Get Started</a>
+  </div>
+  <div class="logo-stage"><div class="ring"></div><img src="assets/logo.jpg" alt="NX Media logo" width="520" height="520"></div>
+</header>
+<div class="trust"><span>Fast Delivery</span><span>Professional Editing</span><span>Consistent Quality</span></div>
+
+<section id="about">
+  <h2 class="about-h">Who we are</h2>
+  <p class="statement">We take the editing work off your hands and deliver videos that are clean, engaging, professional, and ready to publish.</p>
+  <div class="about-cols">
+    <p>NX Media is a professional video editing company specializing in high-quality content for YouTubers, creators, brands, and agencies.</p>
+    <p>Whether you need a single video or a large volume of content every month, our team is built to handle different types of editing requirements while maintaining consistent quality.</p>
+  </div>
+</section>
+
+<section id="process" style="border-top:1px solid var(--hair)">
+  <h2>How we work</h2>
+  <div class="steps">
+    <div class="card"><div class="n">1</div><h4>Send your footage</h4><p>Send us your raw footage and explain your requirements and preferred style.</p></div>
+    <div class="card"><div class="n">2</div><h4>We edit</h4><p>Our editing team works on your video according to your instructions and the selected package.</p></div>
+    <div class="card"><div class="n">3</div><h4>Quality check</h4><p>We review editing, audio, subtitles, effects, and overall quality against the required standard.</p></div>
+    <div class="card"><div class="n">4</div><h4>Delivery</h4><p>We deliver the final video, ready for publishing.</p></div>
+    <div class="card"><div class="n">5</div><h4>Revisions</h4><p>Need changes? We make the required revisions according to the agreed package.</p></div>
+  </div>
+</section>
+
+<section id="work" style="border-top:1px solid var(--hair)">
+  <h2>Our work</h2>
+  <!-- To add a sample: replace a .frame's inner .ph with <iframe src="YOUTUBE_EMBED_URL" allowfullscreen></iframe> (or a <video controls src="..."></video>) -->
+  <div class="work"><div class="frame"><div class="ph"><span>▶</span>Your video here</div></div><div class="frame"><div class="ph"><span>▶</span>Your video here</div></div><div class="frame"><div class="ph"><span>▶</span>Your video here</div></div></div>
+  <p class="work-note">Samples are coming soon. Want to see the quality first? Ask us on WhatsApp.</p>
+</section>
+
+<section id="pricing" style="border-top:1px solid var(--hair)">
+  <h2>Pricing</h2>
+  <div class="plans rv">
+    <div class="card plan">
+      <h3>Basic</h3>
+      <div class="price">$40<small> / video</small></div>
+      <ul>
+        <li>Professional cutting</li><li>Remove unnecessary parts</li><li>Remove pauses and mistakes</li>
+        <li>Basic audio improvement</li><li>Clean, professional editing</li><li>Final export ready to publish</li>
+      </ul>
+      <a class="btn" href="#order" data-pkg="Basic">Order this video</a>
+    </div>
+    <div class="card plan pop">
+      <h3>Professional<span class="badge">Most Popular</span></h3>
+      <div class="price">$80<small> / video</small></div>
+      <ul>
+        <li class="base">Everything in Basic</li><li>Professional subtitles</li><li>Smooth transitions</li><li>Sound effects</li>
+        <li>Background music</li><li>Color correction</li><li>Zooms &amp; dynamic cuts</li><li>Simple motion graphics</li>
+      </ul>
+      <a class="btn" href="#order" data-pkg="Professional">Order this video</a>
+    </div>
+    <div class="card plan">
+      <h3>Premium</h3>
+      <div class="price">$150<small> / video</small></div>
+      <ul>
+        <li class="base">Everything in Professional</li><li>Advanced motion graphics</li><li>Cinematic color grading</li><li>Advanced sound design</li>
+        <li>Custom animations</li><li>B-roll integration</li><li>Advanced storytelling &amp; pacing</li><li>Priority turnaround</li>
+      </ul>
+      <a class="btn" href="#order" data-pkg="Premium">Order this video</a>
+    </div>
+  </div>
+  <div class="card custom">
+    <div><h3>Need 50+ videos per month?</h3><p>Contact us for a custom package based on your content volume and requirements.</p></div>
+    <a class="btn" href="#order" data-pkg="Custom">Request a custom package</a>
+  </div>
+</section>
+
+<section id="order" style="border-top:1px solid var(--hair)">
+  <div class="order">
+    <div class="intro">
+      <h2>Order your video</h2>
+      <p>Fill in the details and we open WhatsApp with your request already written. You just press send.</p>
+      <div class="order-perks">
+        <div class="perk">
+          <div class="perk-i"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div><h4>Direct Communication</h4><p>Talk directly with your video editor on WhatsApp to align on your preferred style and pacing.</p></div>
+        </div>
+        <div class="perk">
+          <div class="perk-i"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div><h4>Fast Turnaround</h4><p>Reliable and consistent delivery. Priority turnaround is guaranteed for Premium & custom packages.</p></div>
+        </div>
+        <div class="perk">
+          <div class="perk-i"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+          <div><h4>Revisions Included</h4><p>Every order includes revisions to adjust audio, color, cuts, and text until you are completely satisfied.</p></div>
+        </div>
+        <div class="perk">
+          <div class="perk-i"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div><h4>100% Confidential & Secure</h4><p>Your raw footage and unreleased content are treated with strict privacy and never shared.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="f card" role="group" aria-label="Order form">
+      <form id="of" novalidate style="display:grid;gap:20px" onsubmit="return false">
+        <fieldset><legend>Package</legend><div class="opts"><label><input type="radio" name="pkg" value="Basic"><span>Basic<small>$40 / video</small></span></label><label><input type="radio" name="pkg" value="Professional" checked><span>Professional<small>$80 / video</small></span></label><label><input type="radio" name="pkg" value="Premium"><span>Premium<small>$150 / video</small></span></label><label><input type="radio" name="pkg" value="Custom"><span>Custom<small>50+ videos / month</small></span></label></div></fieldset>
+        <div class="row2">
+          <div><label class="l" for="nm">Your name</label><input id="nm" type="text" autocomplete="name" placeholder="Your name" aria-describedby="e-nm"><p class="ferr" id="e-nm" role="alert"></p></div>
+          <div>
+            <label class="l" for="ct">Number of videos</label>
+            <div class="stepper" id="st-ct">
+              <button type="button" class="step-btn" id="ct-dec" aria-label="Decrease videos">−</button>
+              <input id="ct" type="number" min="1" max="99" value="1" inputmode="numeric" aria-describedby="e-ct">
+              <button type="button" class="step-btn" id="ct-inc" aria-label="Increase videos">+</button>
+            </div>
+            <p class="ferr" id="e-ct" role="alert"></p>
+          </div>
+        </div>
+        <div><label class="l" for="fl">Footage link</label><input id="fl" type="url" placeholder="Google Drive, Dropbox, WeTransfer…" aria-describedby="h-fl e-fl"><p class="help" id="h-fl">Make sure the link is open to anyone who has it, so we can download your files.</p><p class="ferr" id="e-fl" role="alert"></p></div>
+        <div><label class="l" for="nt">Style and notes</label><textarea id="nt" placeholder="Preferred style, reference video, deadline…"></textarea></div>
+        <div class="est"><span>Estimated total</span><b id="tot">$80</b></div>
+        <button class="btn" type="button" id="go">Send order on WhatsApp</button>
+        <p class="status" id="st" role="status" aria-live="polite"></p>
+        <p class="hint">No footage link yet? Leave it empty and send the files in the chat.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="border-top:1px solid var(--hair)">
+  <h2>Questions</h2>
+  <div class="faq"><details><summary>How do I order a video?</summary><p>Send us a message on WhatsApp with your raw footage, your requirements, and your preferred style. We confirm the package and get started.</p></details><details><summary>How fast is delivery?</summary><p>Fast delivery is a core promise. Premium includes priority turnaround, and we confirm timing for your video before we start.</p></details><details><summary>Can I ask for changes?</summary><p>Yes. We make the required revisions according to the agreed package.</p></details><details><summary>Do you work with agencies and large volumes?</summary><p>Yes. We handle a single video or a large volume every month. For 50+ videos per month, we build a custom package around your volume.</p></details><details><summary>Who do you edit for?</summary><p>YouTubers, creators, brands, and agencies.</p></details></div>
+</section>
+
+<section id="contact" class="cta-sec" style="border-top:1px solid var(--hair)">
+  <h2>Ready to take your content to the next level?</h2>
+  <p>Contact NX Media and let's get started.</p>
+  <div class="contact-cards">
+    <a class="contact-card whatsapp" href="https://wa.me/201060956959?text=Hi%20NX%20Media%2C%20I%20would%20like%20to%20order%20a%20video%20edit." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+      <div class="c-icon wa-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.888 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+      </div>
+      <div class="c-info">
+        <span class="c-label">WhatsApp</span>
+        <b class="c-val">01060956959</b>
+      </div>
+      <div class="c-arrow">›</div>
+    </a>
+
+    <a class="contact-card email" href="mailto:nxeditteam@gmail.com" target="_blank" rel="noopener" aria-label="Send email via Gmail">
+      <div class="c-icon mail-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L12 9.573l8.073-6.08c1.618-1.214 3.927-.059 3.927 1.964Z"/>
+        </svg>
+      </div>
+      <div class="c-info">
+        <span class="c-label">Gmail / Email</span>
+        <b class="c-val">nxeditteam@gmail.com</b>
+      </div>
+      <div class="c-arrow">›</div>
+    </a>
+  </div>
+  <p style="margin-top:28px"><a class="btn" href="https://wa.me/201060956959?text=Hi%20NX%20Media%2C%20I%20need%20a%20video%20edited.%20Here%20are%20the%20details%3A" target="_blank" rel="noopener">Order your video on WhatsApp</a></p>
+</section>
+
+<footer class="ft"><div class="ft-brand"><img src="assets/logo.jpg" alt="NX Media" width="40" height="40"><div><b>NX MEDIA</b><span>Professional video editing</span></div></div><div class="ft-links"><a href="https://wa.me/201060956959" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:nxeditteam@gmail.com">nxeditteam@gmail.com</a></div><div class="ft-copy">© NX Media</div></footer>
+</div>
+<div class="sticky"><a class="btn" href="#order" data-x="1">Order your video</a></div>
+<script>document.documentElement.classList.add("js");(function(){var e=document.querySelector(".rv");if(!e)return;if(!("IntersectionObserver" in window)){e.classList.add("in");return}var o=new IntersectionObserver(function(a){if(a[0].isIntersecting){e.classList.add("in");o.disconnect()}},{threshold:.15});o.observe(e)})()</script>
+<script>(function(){var P={Basic:40,Professional:80,Premium:150},$=function(i){return document.getElementById(i)};
+function pkg(){return document.querySelector('input[name=pkg]:checked').value}
+function n(){return Math.max(1,parseInt($('ct').value,10)||1)}
+function upd(){var k=pkg(),c=n();$('tot').textContent=k==='Custom'?'Custom quote':'$'+(P[k]*c)}
+function err(id,msg){var e=$('e-'+id),i=$(id);e.textContent=msg||'';var box=(id==='ct'&&$('st-ct'))?$('st-ct'):i;if(msg){box.classList.add('bad');i.setAttribute('aria-invalid','true')}else{box.classList.remove('bad');i.removeAttribute('aria-invalid')}}
+document.querySelectorAll('input[name=pkg]').forEach(function(r){r.addEventListener('change',upd)});
+$('ct').addEventListener('input',upd);
+if($('ct-inc')){$('ct-inc').addEventListener('click',function(){var v=n();$('ct').value=v+1;err('ct','');upd()})};
+if($('ct-dec')){$('ct-dec').addEventListener('click',function(){var v=n();if(v>1){$('ct').value=v-1;err('ct','');upd()}})};
+['nm','ct','fl'].forEach(function(id){$(id).addEventListener('input',function(){err(id,'')})});
+document.querySelectorAll('[data-pkg]').forEach(function(a){a.addEventListener('click',function(){var r=document.querySelector('input[name=pkg][value='+a.dataset.pkg+']');if(r){r.checked=true;upd()}})});
+$('go').addEventListener('click',function(){var nm=$('nm').value.trim(),k=pkg(),fl=$('fl').value.trim(),nt=$('nt').value.trim(),first=null;
+if(!nm){err('nm','Please enter your name.');first=first||'nm'}
+if(!(parseInt($('ct').value,10)>=1)){err('ct','Enter at least 1 video.');first=first||'ct'}
+if(fl&&!/^https?:\/\/\S+$/i.test(fl)){err('fl','The link should start with https://');first=first||'fl'}
+if(first){$(first).focus();return}
+var c=n(),pr=k==='Custom'?'Custom (50+ videos per month)':k+' ($'+P[k]+'/video)';
+var m='Hi NX Media, I would like to order a video edit.\n\nName: '+nm+'\nPackage: '+pr+'\nNumber of videos: '+c+'\nEstimated total: '+$('tot').textContent+'\nFootage link: '+(fl||'I will send it in the chat')+(nt?'\nNotes: '+nt:'');
+var u='https://wa.me/201060956959?text='+encodeURIComponent(m),b=$('go'),s=$('st');
+s.textContent='Opening WhatsApp… ';var a=document.createElement('a');a.href=u;a.target='_blank';a.rel='noopener';a.textContent='Didn’t open? Tap here';s.appendChild(a);
+b.disabled=true;b.textContent='Opening WhatsApp…';
+setTimeout(function(){b.disabled=false;b.textContent='Send order on WhatsApp'},4000);
+if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){window.location.href=u}else{window.open(u,'_blank','noopener')}});
+upd()})();
+(function(){var b=document.getElementById('mb'),p=document.getElementById('mp');
+function c(){p.hidden=true;b.setAttribute('aria-expanded','false')}
+b.addEventListener('click',function(e){e.stopPropagation();var o=p.hidden;p.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false')});
+p.addEventListener('click',function(e){if(e.target.tagName==='A')c()});
+document.addEventListener('click',function(e){if(!p.contains(e.target))c()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')c()});
+window.addEventListener('resize',function(){if(window.innerWidth>900)c()})})();</script>
+<script>(function(){var ids=['about','process','work','pricing','order','faq','contact'],links=document.querySelectorAll('nav .links a,#mp a'),vis={},lock=0,tk=0;
+function set(id){links.forEach(function(a){var on=a.getAttribute('href')==='#'+id;a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')})}
+function calc(){if(Date.now()<lock)return;var cur='';ids.forEach(function(i){if(vis[i])cur=i});
+if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-6)cur='contact';set(cur)}
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){vis[e.target.id]=e.isIntersecting});calc()},{rootMargin:'-35% 0px -60% 0px'});
+ids.forEach(function(i){var el=document.getElementById(i);if(el)io.observe(el)})}
+window.addEventListener('scroll',function(){if(tk)return;tk=requestAnimationFrame(function(){tk=0;calc()})},{passive:true});
+links.forEach(function(a){a.addEventListener('click',function(){lock=Date.now()+900;set(a.getAttribute('href').slice(1));setTimeout(calc,950)})});
+calc()})();</script>
+<script>(function(){var s=document.querySelector('.sticky'),ids=['order','contact'],v={};if(!s||!('IntersectionObserver' in window))return;
+var io=new IntersectionObserver(function(es){es.forEach(function(e){v[e.target.id]=e.isIntersecting});s.classList.toggle('off',!!(v.order||v.contact))},{rootMargin:'0px 0px -25% 0px'});
+ids.forEach(function(i){var el=document.getElementById(i);if(el)io.observe(el)})})();</script>
+</body>
+</html>
