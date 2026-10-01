@@ -41,7 +41,7 @@ h2{font-size:clamp(36px,6vw,56px);line-height:1.2;letter-spacing:-.05em}
 @keyframes reveal{from{opacity:0;transform:scale(.9) rotateY(-40deg)}to{opacity:1;transform:none}}
 @keyframes sway{from{transform:rotateY(-14deg)}to{transform:rotateY(14deg)}}
 .nav-logo{display:flex;align-items:center;gap:10px}
-.nav-logo img{width:36px;height:36px}
+.nav-logo img{width:36px;height:36px;display:block}
 .cols{display:grid;grid-template-columns:1fr 1.2fr;gap:64px}
 .cols p{color:var(--ash);margin:0 0 16px;max-width:560px}
 .cols h3{font-size:24px;font-weight:500;color:var(--white);margin:0 0 16px}
@@ -191,7 +191,7 @@ nav .links a:active{color:var(--white)}
 .f input.bad,.f textarea.bad{border-color:#ff9592}
 .ft{align-items:center}
 .ft-brand{display:flex;align-items:center;gap:12px}
-.ft-brand img{width:40px;height:40px}
+.ft-brand img{width:40px;height:40px;display:block;flex-shrink:0}
 .ft-brand b{display:block;color:var(--white);font-weight:600;letter-spacing:.02em}
 .ft-brand span{font-size:14px;color:var(--ash)}
 .ft-links{display:flex;gap:24px;flex-wrap:wrap}
